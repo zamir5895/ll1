@@ -731,15 +731,15 @@ def main():
 
                         alfabeto, no_terminales, terminales = proccess_ll1(transformed)
 
-                        primeros = obtener_firsts(alfabeto, no_terminales, terminales)
+                        primeros = obtener_firsts(transformed, no_terminales, terminales)
 
-                        siguientes = obtener_los_follows(alfabeto, no_terminales, primeros, terminales)
+                        siguientes = obtener_los_follows(transformed, no_terminales, primeros, terminales)
 
-                        tabla_reglas = construir_tabla_reglas(alfabeto, primeros, siguientes, terminales, no_terminales)
+                        tabla_reglas = construir_tabla_reglas(transformed, primeros, siguientes, terminales, no_terminales)
 
 
                         st.session_state.es_ll1 = True
-                        st.session_state.rules = alfabeto
+                        st.session_state.rules = transformed
                         st.session_state.no_terminales = no_terminales
                         st.session_state.terminales = terminales
                         st.session_state.primeros = primeros
