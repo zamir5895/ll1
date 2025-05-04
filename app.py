@@ -54,42 +54,51 @@ def procesamiento_gramatica(rules):
       nonterms.append(lhs)
   return nonterms
 
-def tiene_recursion_por_izquierda(rules,nonterms):
-  for r in rules:
-    if '->' not in r:continue
-    i,d = map(str.strip, r.split('->',1))
-    for prod in map(str.strip, d.split('!')):
-      p_s = prod.split()[0] if prod else ''
-      if p_s == i:
-        return True
-  p_simbolos = defaultdict(list)
-  for nt in nonterms:
-    p_simbolos[nt] = []
-  for r in rules:
-    if '->' not in r:
-      continue
-    i, d = map(str.strip, r.split('->', 1))
-    for prod in map(str.strip, d.split('|')):
-      if not prod:
-        continue
-      first = prod.split()[0]
-      if first in nonterms:
-        p_simbolos[i].append(first)
+def tiene_recursion_por_izquierda(rules, nonterms):
+    for r in rules:
+        if '->' not in r:
+            continue
+        i, d = map(str.strip, r.split('->', 1))
+        for prod in map(str.strip, d.split('|')):
+            p_s = prod.split()[0] if prod else ''
+            if p_s == i:
+                return True
+    
+    p_simbolos = defaultdict(list)
+    
+    for r in rules:
+        if '->' not in r:
+            continue
+        i, d = map(str.strip, r.split('->', 1))
+        for prod in map(str.strip, d.split('|')):
+            if not prod:
+                continue
+            first = prod.split()[0]
+            if first in nonterms:
+                p_simbolos[i].append(first)
+    
+    def tiene_ciclo(simbolo, visitados, en_camino):
+        if simbolo not in visitados:
+            visitados.add(simbolo)
+            en_camino.add(simbolo)
+            
+            for vecino in p_simbolos[simbolo]:
+                if vecino not in visitados:
+                    if tiene_ciclo(vecino, visitados, en_camino):
+                        return True
+                elif vecino in en_camino:
+                    return True
+            
+            en_camino.remove(simbolo)
+        return False
+    
     visitados = set()
-
-    def encontrar_ciclos(simbolo, p):
-      if simbolo in visitados:
-        return True
-      p.add(simbolo)
-      for s in p_simbolos[simbolo]:
-        if encontrar_ciclos(s, p.copy()):
-          return True
-      return False
-
     for nt in nonterms:
-      if encontrar_ciclos(nt, set()):
-        return True
-  return False
+        if nt not in visitados:
+            if tiene_ciclo(nt, visitados, set()):
+                return True
+    return False
+
 
 
 
