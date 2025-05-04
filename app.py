@@ -552,7 +552,7 @@ def main():
     )
     st.markdown("""
     1. Ingrese su gramática en el área de texto (una producción por línea)
-    2. Separe alternativas con el símbolo `|`
+    2. Separe alternativas con el símbolo `ε`
     3. Haga clic en **Analizar Gramática**
     4. Revise los resultados y transformaciones sugeridas
     5. Cada token de los inputs debe de estar separado por un espacio.
