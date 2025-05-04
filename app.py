@@ -535,7 +535,7 @@ def main():
 
     colored_header(
         label="LL(1) Analyzer Pro",
-        description="Herramienta para análisis y transformación de gramáticas LL(1)",
+        description="Herramienta para análisis y transformación de gramaticas que no son LL(1) a LL(1)",
         color_name="blue-70"
     )
 
