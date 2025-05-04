@@ -4,7 +4,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Una suite completa para el análisis y transformación de gramáticas LL(1) con capacidades interactivas de parsing.
+Una herramienta para el análisis y transformación de gramáticas LL(1) con capacidades interactivas de parsing.
 
 
 ## 🌟 Características Principales
