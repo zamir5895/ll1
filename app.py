@@ -736,8 +736,6 @@ def main():
                         siguientes = obtener_los_follows(transformed, no_terminales, primeros, terminales)
 
                         tabla_reglas = construir_tabla_reglas(transformed, primeros, siguientes, terminales, no_terminales)
-
-
                         st.session_state.es_ll1 = True
                         st.session_state.rules = transformed
                         st.session_state.no_terminales = no_terminales
