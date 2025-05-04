@@ -820,20 +820,18 @@ def main():
             ```
             """)
 
-        author_card = card(
-            title="👨‍💻 Autores: ",
-            text="""Desarrollado por:
-              - Matias Meneses, Zamir Lizardo y Hector Nieto
-          
+        st.markdown(
+            """
+            <div style='text-align: center; padding: 20px;'>
+                <h3>👨‍💻 Desarollado por: </h3>
+                <p><strong>Matias Meneses</strong><br>
+                <strong>Zamir Lizardo<br>
+                <strong>Hector Nieto</strong></p>
+                <p style="font-size: small;">Universidad de Ingenieria y Tecnologia (UTEC).</p>
+                <p style="font-size: small;">Desarrollado con ❤️ para el profesor Yarasca.</p>
+            </div>
             """,
-            styles={
-                "card": {
-                    "width": "100%",
-                    "margin-top": "20px",
-                    "padding": "20px",
-                    "background": "linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%)"
-                }
-            }
+            unsafe_allow_html=True
         )
 
 
